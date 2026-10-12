@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101820" />
+    <title>Weatherly | Your daily forecast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Weatherly home">
+          <span class="brand-mark" aria-hidden="true">☼</span>
+          <span>weatherly</span>
+        </a>
+        <p class="topbar-note">A little clearer, every day.</p>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL WEATHER DESK</p>
+          <h1 id="page-title">Weather, <span>made simple.</span></h1>
+          <p class="intro-copy">A clear view of today and the days ahead.</p>
+        </div>
+        <form class="search-form" id="search-form" role="search">
+          <label class="visually-hidden" for="city-input">Search for a city</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="city-input" name="city" type="search" placeholder="Search a city..." autocomplete="off" />
+          <button class="search-button" type="submit">Search</button>
+        </form>
+      </section>
+
+      <div class="error-message" id="error-message" role="alert" hidden></div>
+
+      <section class="weather-layout" aria-label="Weather dashboard">
+        <article class="current-card panel">
+          <div class="current-topline">
+            <div>
+              <p class="card-label">CURRENT WEATHER</p>
+              <h2 id="location-name">Loading weather...</h2>
+            </div>
+            <button class="location-button" id="location-button" type="button">
+              <span aria-hidden="true">◎</span> Use my location
+            </button>
+          </div>
+
+          <div class="current-weather">
+            <div class="temperature-block">
+              <p class="temperature" id="temperature">--<span>°</span></p>
+              <p class="condition" id="condition">Getting the latest forecast</p>
+            </div>
+            <img class="current-icon" id="current-icon" alt="" hidden />
+          </div>
+
+          <div class="weather-details">
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">↗</span>
+              <div><p>Feels like</p><strong id="feels-like">--°</strong></div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon humidity-icon" aria-hidden="true">◌</span>
+              <div><p>Humidity</p><strong id="humidity">--%</strong></div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon wind-icon" aria-hidden="true">≋</span>
+              <div><p>Wind</p><strong id="wind-speed">-- m/s</strong></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chart-card panel">
+          <div class="section-heading">
+            <div>
+              <p class="card-label">UP NEXT</p>
+              <h2>Temperature next 24 hours</h2>
+            </div>
+            <span class="chart-unit">°C</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="temperature-chart" aria-label="Temperature forecast for the next 24 hours"></canvas>
+          </div>
+        </article>
+
+        <article class="forecast-card panel">
+          <div class="section-heading">
+            <div>
+              <p class="card-label">PLAN AHEAD</p>
+              <h2>5-day forecast</h2>
+            </div>
+            <span class="forecast-caption">Daily outlook</span>
+          </div>
+          <div class="forecast-list" id="forecast-list" aria-live="polite">
+            <p class="forecast-placeholder">Your forecast will appear here.</p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <span>Weatherly</span>
+        <span>Forecast data by OpenWeatherMap</span>
+      </footer>
+    </main>
+  </body>
+</html>
